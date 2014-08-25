@@ -1,0 +1,16 @@
+# Configure PHP
+<IfModule mod_php5.c>
+  php_value magic_quotes_gpc        0
+  php_value magic_quotes_runtime    0
+  php_value short_open_tag          1
+</IfModule>
+
+# Disable MultiViews as it interferes with rewrite
+# Disable directory listings for the potential security benefit
+Options -MultiViews -Indexes
+
+# Configure Rewrite Engine
+RewriteEngine On
+
+# Special handling for sqlite admin
+RewriteRule ^dbadmin$ /vendor/phpliteadmin/phpliteadmin.php [R,L]
